@@ -1,65 +1,156 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { CalloutCard } from "@/components/callout-card";
+import { CtaBanner } from "@/components/cta-banner";
+import { PageHero } from "@/components/page-hero";
+import { PlaceholderGalleryCard } from "@/components/placeholder-gallery-card";
+import { SectionHeading } from "@/components/section-heading";
+import {
+  benefits,
+  models,
+  portfolioItems,
+  processSteps,
+  siteConfig,
+  buildMetadata,
+} from "@/lib/site";
 
-export default function Home() {
+export const metadata: Metadata = buildMetadata({
+  title: "Beton Amprentat in Romania | Curti, Terase si Alei",
+  description:
+    "Beton amprentat pentru curti, terase si alei. Modele moderne, culori variate si executie in toata Romania.",
+  path: "/",
+});
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  areaServed: "Romania",
+  telephone: siteConfig.phoneHref.replace("tel:", ""),
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: siteConfig.phoneHref.replace("tel:", ""),
+    contactType: "customer service",
+    areaServed: "RO",
+    availableLanguage: "ro",
+  },
+  sameAs: [siteConfig.whatsAppUrl],
+  description:
+    "Servicii de beton amprentat pentru curti, terase si alei, cu executie in toata Romania.",
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      <section className="page-shell pb-10 pt-6 sm:pb-14 sm:pt-10">
+        <PageHero
+          eyebrow="Beton amprentat premium"
+          title="Beton amprentat in toata Romania"
+          description="Amenajam curti, terase si alei cu beton amprentat durabil, modern si usor de intretinut."
+          primaryCta={{ href: "/contact", label: "Cere oferta" }}
+          secondaryCta={{ href: siteConfig.phoneHref, label: "Suna acum" }}
+        >
+          <div className="grid gap-4 sm:grid-cols-3">
+            {benefits.map((benefit) => (
+              <CalloutCard
+                key={benefit.title}
+                title={benefit.title}
+                description={benefit.description}
+              />
+            ))}
+          </div>
+        </PageHero>
+      </section>
+
+      <section className="page-shell py-10 sm:py-14">
+        <SectionHeading
+          title="Portofoliu in pregatire"
+          description="Pregatim galeria cu lucrari reale din mai multe zone ale tarii. Pana atunci, vezi structura proiectelor pe care le livram frecvent."
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {portfolioItems.slice(0, 3).map((item) => (
+            <PlaceholderGalleryCard key={item.title} item={item} />
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+      </section>
+
+      <section className="page-shell py-10 sm:py-14">
+        <div className="grid gap-8 rounded-[2rem] border border-border bg-card p-6 shadow-soft sm:p-8 lg:grid-cols-[1.2fr_0.8fr]">
+          <div>
+            <SectionHeading
+              title="Modele si culori pentru fiecare stil"
+              description="Putem adapta finisajul in functie de spatiu, stilul casei si nivelul de trafic."
+              align="left"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="flex flex-wrap gap-3">
+              {models.map((model) => (
+                <span
+                  key={model.name}
+                  className="rounded-full border border-copper/20 bg-copper/10 px-4 py-2 text-sm font-semibold text-foreground"
+                >
+                  {model.name}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-[1.75rem] border border-dashed border-copper/35 bg-gradient-to-br from-copper/12 via-card to-background p-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-copper">
+              Solutii populare
+            </p>
+            <ul className="mt-4 space-y-3 text-sm text-muted sm:text-base">
+              <li>Piatra naturala pentru curti si intrari elegante.</li>
+              <li>Lemn si dale pentru terase cu aspect cald si ordonat.</li>
+              <li>Caramida si pavaj pentru alei clare si rezistente.</li>
+            </ul>
+            <Link
+              href="/modele-si-culori-beton"
+              className="mt-6 inline-flex text-sm font-semibold text-copper transition hover:text-copper-strong"
+            >
+              Vezi toate modelele si culorile
+            </Link>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="page-shell py-10 sm:py-14">
+        <SectionHeading
+          title="Cum lucram"
+          description="Proces simplu, clar si usor de urmarit, de la primul telefon pana la finalizare."
+        />
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {processSteps.map((step, index) => (
+            <article
+              key={step.title}
+              className="rounded-[1.5rem] border border-border bg-card p-6 shadow-soft"
+            >
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-copper">
+                0{index + 1}
+              </p>
+              <h3 className="mt-3 text-xl font-display font-semibold text-foreground">
+                {step.title}
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-muted sm:text-base">
+                {step.description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="page-shell py-10 sm:py-16">
+        <CtaBanner
+          title="Solicita o estimare gratuita pentru proiectul tau"
+          description="Lucram in toata Romania si iti raspundem clar despre etape, modele, culori si costuri orientative."
+          primaryCta={{ href: "/contact", label: "Cere oferta" }}
+          secondaryCta={{ href: siteConfig.phoneHref, label: "Suna acum" }}
+        />
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </>
   );
 }
