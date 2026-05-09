@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CtaBanner } from "@/components/cta-banner";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
@@ -44,6 +45,43 @@ export default function ModelsPage() {
           title="Ce este betonul amprentat"
           description="Este un sistem decorativ turnat la fata locului, texturat cu matrite si colorat pentru a reproduce modele precum piatra, caramida, lemn, dale sau pavaj."
         />
+        <div className="grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              src: "/images/portfolio/wood-pattern-stamped-concrete.jpg",
+              alt: "Beton amprentat model lemn în culoare antracit",
+              label: "Model lemn",
+            },
+            {
+              src: "/images/portfolio/decorative-compass-concrete.jpg",
+              alt: "Beton amprentat cu busolă decorativă",
+              label: "Busolă decorativă",
+            },
+            {
+              src: "/images/portfolio/grey-stone-stamped-concrete-courtyard.jpg",
+              alt: "Beton amprentat gri model piatră naturală",
+              label: "Piatră naturală",
+            },
+          ].map((item) => (
+            <figure
+              key={item.src}
+              className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft"
+            >
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="px-4 py-3 text-sm font-semibold text-foreground">
+                {item.label}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </section>
 
       <section className="section-space">
@@ -69,7 +107,7 @@ export default function ModelsPage() {
       </section>
 
       <section className="section-space">
-        <div className="grid gap-6 rounded-[2rem] border border-border bg-card p-6 shadow-soft sm:p-8 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="grid gap-6 rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Culori populare
@@ -83,7 +121,7 @@ export default function ModelsPage() {
             {colors.map((color) => (
               <div
                 key={color}
-                className="rounded-[1.25rem] border border-copper/18 bg-copper/8 px-4 py-4 text-sm font-semibold text-foreground"
+                className="rounded-xl border border-copper/18 bg-copper/8 px-4 py-4 text-sm font-semibold text-foreground"
               >
                 {color}
               </div>

@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { CtaBanner } from "@/components/cta-banner";
 import { PageHero } from "@/components/page-hero";
-import { PlaceholderGalleryCard } from "@/components/placeholder-gallery-card";
+import { PortfolioCard } from "@/components/portfolio-card";
 import { SectionHeading } from "@/components/section-heading";
 import { buildMetadata, portfolioItems, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "Portofoliu beton amprentat",
   description:
-    "Vezi exemple de proiecte de beton amprentat pentru curti, terase si alei. Galeria va fi actualizata cu lucrari reale.",
+    "Vezi lucrări beton amprentat în România pentru curți, terase, piscine, scări, model lemn și busolă decorativă.",
   path: "/portofoliu",
 });
 
@@ -17,28 +17,36 @@ export default function PortfolioPage() {
     <div className="page-shell section-space">
       <PageHero
         eyebrow="Portofoliu"
-        title="Exemple de lucrari si stiluri propuse"
-        description="Galeria va fi actualizata cu fotografii reale din proiecte finalizate pentru clienti din toata Romania."
-        primaryCta={{ href: "/contact", label: "Solicita o estimare" }}
+        title="Lucrări reale de beton amprentat"
+        description="Galerie pentru lucrări de beton amprentat în România: curți, terase, piscine, scări, model lemn și busolă decorativă."
+        primaryCta={{ href: "/contact", label: "Solicită o estimare" }}
+        image={{
+          src: "/images/portfolio/grey-stone-stamped-concrete-courtyard.jpg",
+          alt: "Curte cu beton amprentat gri, model piatră naturală",
+        }}
       />
 
       <section className="section-space">
         <SectionHeading
-          title="Structura galeriei"
-          description="Pentru moment afisam proiecte demonstrative, astfel incat pagina sa fie pregatita pentru incarcare rapida a fotografiilor reale ulterior."
+          title="Portofoliu beton amprentat"
+          description="Fotografii selectate din proiecte reale, optimizate pentru încărcare rapidă și afișare responsivă."
         />
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-          {portfolioItems.map((item) => (
-            <PlaceholderGalleryCard key={`${item.title}-${item.location}`} item={item} />
+          {portfolioItems.map((item, index) => (
+            <PortfolioCard
+              key={`${item.title}-${item.category}`}
+              item={item}
+              priority={index < 2}
+            />
           ))}
         </div>
       </section>
 
       <CtaBanner
-        title="Vrei o lucrare care sa arate bine si dupa ani de folosire?"
-        description="Scrie-ne sau suna-ne pentru o estimare gratuita si o recomandare potrivita pentru suprafata ta."
+        title="Vrei o lucrare care să arate bine și după ani de folosire?"
+        description="Scrie-ne sau sună-ne pentru o estimare gratuită și o recomandare potrivită pentru suprafața ta."
         primaryCta={{ href: "/contact", label: "Mergi la contact" }}
-        secondaryCta={{ href: siteConfig.phoneHref, label: "Suna acum" }}
+        secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
       />
     </div>
   );

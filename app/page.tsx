@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CalloutCard } from "@/components/callout-card";
 import { CtaBanner } from "@/components/cta-banner";
 import { PageHero } from "@/components/page-hero";
-import { PlaceholderGalleryCard } from "@/components/placeholder-gallery-card";
+import { PortfolioCard } from "@/components/portfolio-card";
 import { SectionHeading } from "@/components/section-heading";
 import {
   benefits,
@@ -50,6 +50,10 @@ export default function HomePage() {
           description="Amenajam curti, terase si alei cu beton amprentat durabil, modern si usor de intretinut."
           primaryCta={{ href: "/contact", label: "Cere oferta" }}
           secondaryCta={{ href: siteConfig.phoneHref, label: "Suna acum" }}
+          image={{
+            src: "/images/portfolio/large-grey-stamped-concrete-terrace.jpg",
+            alt: "Terasă mare cu beton amprentat gri antracit",
+          }}
         >
           <div className="grid gap-4 sm:grid-cols-3">
             {benefits.map((benefit) => (
@@ -65,12 +69,12 @@ export default function HomePage() {
 
       <section className="page-shell py-10 sm:py-14">
         <SectionHeading
-          title="Portofoliu in pregatire"
-          description="Pregatim galeria cu lucrari reale din mai multe zone ale tarii. Pana atunci, vezi structura proiectelor pe care le livram frecvent."
+          title="Lucrari si directii de finisaj"
+          description="Galeria este pregatita pentru fotografii reale de proiect. Selectia finala va folosi imaginile locale dupa ce folderul sursa este disponibil in proiect."
         />
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-          {portfolioItems.slice(0, 3).map((item) => (
-            <PlaceholderGalleryCard key={item.title} item={item} />
+          {portfolioItems.slice(0, 3).map((item, index) => (
+            <PortfolioCard key={item.title} item={item} priority={index === 0} />
           ))}
         </div>
       </section>

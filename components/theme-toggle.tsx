@@ -1,37 +1,66 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-
-const options = [
-  { value: "light", label: "Light" },
-  { value: "dark", label: "Dark" },
-  { value: "system", label: "System" },
-] as const;
+import { MoonIcon, SunIcon } from "@/components/icons";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const activeTheme = theme ?? "system";
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setMounted(true));
+
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div
+        className="grid grid-cols-2 rounded-full border border-border bg-card/90 p-1 shadow-soft backdrop-blur"
+        aria-hidden="true"
+      >
+        <span className="h-9 w-9 rounded-full bg-muted/10" />
+        <span className="h-9 w-9 rounded-full bg-muted/10" />
+      </div>
+    );
+  }
+
+  const isDark = resolvedTheme === "dark";
 
   return (
-    <div className="flex rounded-full border border-border bg-card/90 p-1 shadow-soft backdrop-blur">
-      {options.map((option) => {
-        const isActive = activeTheme === option.value;
-
-        return (
-          <button
-            key={option.value}
-            type="button"
-            onClick={() => setTheme(option.value)}
-            className={[
-              "rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em]",
-              isActive ? "bg-copper text-white" : "text-muted hover:text-foreground",
-            ].join(" ")}
-            aria-pressed={isActive}
-          >
-            {option.label}
-          </button>
-        );
-      })}
+    <div
+      className="grid grid-cols-2 rounded-full border border-border bg-card/90 p-1 shadow-soft backdrop-blur"
+      aria-label="Alege tema site-ului"
+    >
+      <button
+        type="button"
+        onClick={() => setTheme("light")}
+        aria-label="Activează modul luminos"
+        aria-pressed={!isDark}
+        title="Mod luminos"
+        className={[
+          "grid h-9 w-9 place-items-center rounded-full",
+          !isDark ? "bg-copper text-white" : "text-muted hover:text-foreground",
+        ].join(" ")}
+      >
+        <SunIcon className="h-5 w-5" />
+        <span className="sr-only">Mod luminos</span>
+      </button>
+      <button
+        type="button"
+        onClick={() => setTheme("dark")}
+        aria-label="Activează modul întunecat"
+        aria-pressed={isDark}
+        title="Mod întunecat"
+        className={[
+          "grid h-9 w-9 place-items-center rounded-full",
+          isDark ? "bg-copper text-white" : "text-muted hover:text-foreground",
+        ].join(" ")}
+      >
+        <MoonIcon className="h-5 w-5" />
+        <span className="sr-only">Mod întunecat</span>
+      </button>
     </div>
   );
 }

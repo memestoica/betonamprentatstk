@@ -10,54 +10,59 @@ export const siteConfig = {
 
 export const navigationLinks = [
   { href: "/despre-noi", label: "Despre noi" },
-  { href: "/modele-si-culori-beton", label: "Modele si culori beton" },
+  { href: "/modele-si-culori-beton", label: "Modele și culori beton" },
   { href: "/portofoliu", label: "Portofoliu" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
 export const benefits = [
   {
-    title: "Lucram in toata Romania",
+    title: "Lucrăm în toată România",
     description:
-      "Ne deplasam pentru proiecte rezidentiale si comerciale, cu organizare clara si planificare adaptata locatiei.",
+      "Ne deplasăm pentru proiecte rezidențiale și comerciale, cu organizare clară și planificare adaptată locației.",
   },
   {
-    title: "Modele si culori moderne",
+    title: "Modele și culori moderne",
     description:
-      "Alegem finisaje care se potrivesc natural cu fatada, gardul, terasa sau curtea, fara compromis estetic.",
+      "Alegem finisaje care se potrivesc natural cu fațada, gardul, terasa sau curtea, fără compromis estetic.",
   },
   {
-    title: "Executie rapida si curata",
+    title: "Execuție rapidă și curată",
     description:
-      "Punem accent pe ritm bun de lucru, materiale durabile si santier ordonat de la inceput pana la predare.",
+      "Punem accent pe ritm bun de lucru, materiale durabile și șantier ordonat de la început până la predare.",
   },
 ] as const;
 
 export const models = [
   {
-    name: "Piatra naturala",
+    name: "Piatră naturală",
     description:
-      "Aspect robust si elegant, potrivit pentru curti si zone de acces care cer personalitate.",
+      "Aspect robust și elegant, potrivit pentru curți și zone de acces care cer personalitate.",
   },
   {
-    name: "Caramida",
+    name: "Cărămidă",
     description:
-      "Un model ordonat si familiar, bun pentru alei, trotuare de curte si zone decorative.",
+      "Un model ordonat și familiar, bun pentru alei, trotuare de curte și zone decorative.",
   },
   {
     name: "Lemn",
     description:
-      "Textura calda pentru terase si spatii de relaxare unde vrei un aspect mai prietenos.",
+      "Textură caldă pentru terase și spații de relaxare unde vrei un aspect mai prietenos.",
   },
   {
     name: "Dale",
     description:
-      "Linii curate si ritm echilibrat, util pentru amenajari contemporane si suprafete mari.",
+      "Linii curate și ritm echilibrat, util pentru amenajări contemporane și suprafețe mari.",
   },
   {
     name: "Pavaj",
     description:
-      "Aspect tehnic si rezistent, potrivit pentru acces auto si spatii cu trafic frecvent.",
+      "Aspect tehnic și rezistent, potrivit pentru acces auto și spații cu trafic frecvent.",
+  },
+  {
+    name: "Busolă decorativă",
+    description:
+      "Accent central pentru terase, curți ample sau zone unde vrei un detaliu vizual memorabil.",
   },
 ] as const;
 
@@ -65,53 +70,96 @@ export const colors = [
   "Gri",
   "Antracit",
   "Maro",
-  "Roscat",
+  "Roșcat",
   "Crem",
+  "Bej",
+  "Gri deschis",
 ] as const;
 
 export type PortfolioItem = {
   title: string;
-  location: string;
+  category: string;
+  description: string;
   model: string;
   color: string;
+  image: {
+    src: string;
+    alt: string;
+  };
 };
 
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: "Curte rezidentiala",
-    location: "Cluj-Napoca",
-    model: "Piatra naturala",
+    title: "Curte rezidențială",
+    category: "Curți",
+    description:
+      "Amenajare pentru zona de acces și circulație zilnică, cu finisaj rezistent și ușor de întreținut.",
+    model: "Piatră naturală",
     color: "Gri",
+    image: {
+      src: "/images/portfolio/grey-stone-stamped-concrete-courtyard.jpg",
+      alt: "Curte cu beton amprentat gri, model piatră naturală",
+    },
   },
   {
-    title: "Terasa si zona de relaxare",
-    location: "Bucuresti",
-    model: "Lemn",
-    color: "Maro",
-  },
-  {
-    title: "Alee si acces principal",
-    location: "Iasi",
-    model: "Pavaj",
-    color: "Antracit",
-  },
-  {
-    title: "Amenajare curte interioara",
-    location: "Timisoara",
+    title: "Terasă gri antracit",
+    category: "Terase",
+    description:
+      "Suprafață amplă cu model modern, potrivită pentru acces și utilizare zilnică.",
     model: "Dale",
-    color: "Crem",
+    color: "Antracit",
+    image: {
+      src: "/images/portfolio/large-grey-stamped-concrete-terrace.jpg",
+      alt: "Terasă mare cu beton amprentat gri antracit",
+    },
   },
   {
-    title: "Trotuar si alei de gradina",
-    location: "Brasov",
-    model: "Caramida",
-    color: "Roscat",
+    title: "Alee model lemn",
+    category: "Model lemn",
+    description:
+      "Textură de lemn în nuanță gri, potrivită pentru alei laterale și zone de trecere.",
+    model: "Lemn",
+    color: "Antracit",
+    image: {
+      src: "/images/portfolio/wood-pattern-stamped-concrete.jpg",
+      alt: "Alee cu beton amprentat model lemn în culoare antracit",
+    },
   },
   {
-    title: "Curte cu acces auto",
-    location: "Constanta",
-    model: "Pavaj",
+    title: "Zonă piscină",
+    category: "Piscine",
+    description:
+      "Deck decorativ în jurul piscinei, cu aspect luminos și integrare curată în grădină.",
+    model: "Lemn",
+    color: "Gri deschis",
+    image: {
+      src: "/images/portfolio/stamped-concrete-pool-deck.jpg",
+      alt: "Zonă de piscină cu beton amprentat model lemn gri deschis",
+    },
+  },
+  {
+    title: "Scări și acces",
+    category: "Scări",
+    description:
+      "Soluție pentru trepte și zone de tranziție, cu continuitate între niveluri.",
+    model: "Piatră naturală",
     color: "Maro",
+    image: {
+      src: "/images/portfolio/stamped-concrete-stairs.jpg",
+      alt: "Scări finisate cu beton amprentat maro",
+    },
+  },
+  {
+    title: "Busolă decorativă",
+    category: "Busolă decorativă",
+    description:
+      "Element decorativ pentru zone centrale, potrivit când proiectul are nevoie de un accent distinct.",
+    model: "Busolă decorativă",
+    color: "Antracit",
+    image: {
+      src: "/images/portfolio/decorative-compass-concrete.jpg",
+      alt: "Model busolă decorativă în beton amprentat gri",
+    },
   },
 ];
 
@@ -119,22 +167,22 @@ export const processSteps = [
   {
     title: "Contact",
     description:
-      "Ne spui pe scurt ce suprafata ai si ce rezultat iti doresti, prin telefon sau mesaj.",
+      "Ne spui pe scurt ce suprafață ai și ce rezultat îți dorești, prin telefon sau mesaj.",
   },
   {
     title: "Estimare",
     description:
-      "Discutam variante de model, culoare si suprafata pentru o evaluare initiala clara.",
+      "Discutăm variante de model, culoare și suprafață pentru o evaluare inițială clară.",
   },
   {
-    title: "Executie",
+    title: "Execuție",
     description:
-      "Stabilim perioada de lucru si executam cu materiale durabile si atentie la detalii.",
+      "Stabilim perioada de lucru și executăm cu materiale durabile și atenție la detalii.",
   },
   {
     title: "Finalizare",
     description:
-      "Predam lucrarea curat, cu recomandari utile pentru intretinere si folosire corecta.",
+      "Predăm lucrarea curat, cu recomandări utile pentru întreținere și folosire corectă.",
   },
 ] as const;
 

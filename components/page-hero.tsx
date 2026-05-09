@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -13,6 +14,10 @@ type PageHeroProps = {
     href: string;
     label: string;
   };
+  image?: {
+    src: string;
+    alt: string;
+  };
   children?: ReactNode;
 };
 
@@ -22,6 +27,7 @@ export function PageHero({
   description,
   primaryCta,
   secondaryCta,
+  image,
   children,
 }: PageHeroProps) {
   return (
@@ -54,16 +60,37 @@ export function PageHero({
             ) : null}
           </div>
         </div>
-        <div className="rounded-[1.75rem] border border-copper/20 bg-gradient-to-br from-copper/18 via-transparent to-background p-6">
-          <p className="text-sm leading-7 text-muted sm:text-base">
-            Solutie potrivita pentru proprietari care cauta un finisaj rezistent,
-            usor de intretinut si coerent vizual, fara sa aglomereze spatiul.
-          </p>
-          <div className="mt-6 h-px bg-border" />
-          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-copper">
-            Executie curata. Comunicare clara. Acoperire nationala.
-          </p>
-        </div>
+        {image ? (
+          <div className="relative min-h-72 overflow-hidden rounded-[1.75rem] border border-copper/20 shadow-soft sm:min-h-96 lg:min-h-[28rem]">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 text-white">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
+                Beton amprentat STK
+              </p>
+              <p className="mt-2 font-display text-2xl font-semibold tracking-normal">
+                Lucrări curate, pregătite pentru utilizare zilnică.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="rounded-[1.75rem] border border-copper/20 bg-gradient-to-br from-copper/18 via-transparent to-background p-6">
+            <p className="text-sm leading-7 text-muted sm:text-base">
+              Soluție potrivită pentru proprietari care caută un finisaj rezistent,
+              ușor de întreținut și coerent vizual, fără să aglomereze spațiul.
+            </p>
+            <div className="mt-6 h-px bg-border" />
+            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-copper">
+              Execuție curată. Comunicare clară. Acoperire națională.
+            </p>
+          </div>
+        )}
       </div>
       {children ? <div className="mt-8">{children}</div> : null}
     </div>
