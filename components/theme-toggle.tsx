@@ -17,11 +17,11 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <div
-        className="grid grid-cols-2 rounded-full border border-border bg-card/90 p-1 shadow-soft backdrop-blur"
+        className="mx-auto grid w-fit grid-cols-2 rounded-full border border-border bg-card/75 p-1 shadow-soft backdrop-blur"
         aria-hidden="true"
       >
-        <span className="h-9 w-9 rounded-full bg-muted/10" />
-        <span className="h-9 w-9 rounded-full bg-muted/10" />
+        <span className="h-8 w-28 rounded-full bg-muted/10" />
+        <span className="h-8 w-28 rounded-full bg-muted/10" />
       </div>
     );
   }
@@ -30,7 +30,7 @@ export function ThemeToggle() {
 
   return (
     <div
-      className="grid grid-cols-2 rounded-full border border-border bg-card/90 p-1 shadow-soft backdrop-blur"
+      className="mx-auto grid w-fit grid-cols-2 rounded-full border border-border bg-card/75 p-1 shadow-soft backdrop-blur"
       aria-label="Alege tema site-ului"
     >
       <button
@@ -38,28 +38,26 @@ export function ThemeToggle() {
         onClick={() => setTheme("light")}
         aria-label="Activează modul luminos"
         aria-pressed={!isDark}
-        title="Mod luminos"
         className={[
-          "grid h-9 w-9 place-items-center rounded-full",
+          "inline-flex h-8 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-semibold",
           !isDark ? "bg-copper text-white" : "text-muted hover:text-foreground",
         ].join(" ")}
       >
-        <SunIcon className="h-5 w-5" />
-        <span className="sr-only">Mod luminos</span>
+        <SunIcon className="h-4 w-4" />
+        Mod luminos
       </button>
       <button
         type="button"
         onClick={() => setTheme("dark")}
         aria-label="Activează modul întunecat"
         aria-pressed={isDark}
-        title="Mod întunecat"
         className={[
-          "grid h-9 w-9 place-items-center rounded-full",
+          "inline-flex h-8 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-semibold",
           isDark ? "bg-copper text-white" : "text-muted hover:text-foreground",
         ].join(" ")}
       >
-        <MoonIcon className="h-5 w-5" />
-        <span className="sr-only">Mod întunecat</span>
+        <MoonIcon className="h-4 w-4" />
+        Mod întunecat
       </button>
     </div>
   );

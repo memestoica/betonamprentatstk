@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Beton Amprentat STK",
   },
   description:
-    "Beton amprentat pentru curti, terase si alei. Modele moderne, culori variate si executie in toata Romania.",
+    "Beton amprentat pentru curți, terase, alei și spații exterioare. Lucrări în toată România, inclusiv localități rurale.",
   alternates: {
     canonical: "/",
   },
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     locale: "ro_RO",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "Beton Amprentat in Romania | Curti, Terase si Alei",
+    title: "Beton Amprentat STK | Curți, Terase și Alei în Toată România",
     description:
-      "Beton amprentat pentru curti, terase si alei. Modele moderne, culori variate si executie in toata Romania.",
+      "Beton amprentat pentru curți, terase, alei și spații exterioare. Lucrări în toată țara, cu garanție.",
     images: [
       {
         url: "/opengraph-image",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Beton Amprentat in Romania | Curti, Terase si Alei",
+    title: "Beton Amprentat STK | Curți, Terase și Alei în Toată România",
     description:
-      "Beton amprentat pentru curti, terase si alei. Modele moderne, culori variate si executie in toata Romania.",
+      "Beton amprentat pentru curți, terase, alei și spații exterioare. Lucrări în toată țara, cu garanție.",
     images: ["/opengraph-image"],
   },
   category: "construction",

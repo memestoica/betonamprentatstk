@@ -11,10 +11,12 @@ import { navigationLinks, siteConfig } from "@/lib/site";
 function HeaderAction({
   href,
   label,
+  tone = "default",
   children,
 }: {
   href: string;
   label: string;
+  tone?: "default" | "whatsapp";
   children: React.ReactNode;
 }) {
   return (
@@ -22,7 +24,12 @@ function HeaderAction({
       href={href}
       aria-label={label}
       title={label}
-      className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border bg-card/88 text-foreground shadow-soft backdrop-blur hover:-translate-y-0.5 hover:border-copper/35 hover:text-copper"
+      className={[
+        "grid h-10 w-10 shrink-0 place-items-center rounded-full border shadow-soft backdrop-blur hover:-translate-y-0.5",
+        tone === "whatsapp"
+          ? "border-[#25D366]/35 bg-[#25D366] text-white hover:bg-[#1EAE54]"
+          : "border-border bg-card/88 text-foreground hover:border-copper/35 hover:text-copper",
+      ].join(" ")}
     >
       {children}
     </a>
@@ -34,7 +41,7 @@ export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/78 shadow-[0_10px_34px_rgba(17,24,39,0.08)] backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/80 shadow-[0_10px_34px_rgba(17,24,39,0.08)] backdrop-blur-2xl">
       <div className="page-shell">
         <div className="grid min-h-18 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 py-2.5 lg:min-h-20 lg:grid-cols-[1fr_auto_1fr] lg:gap-4 lg:py-3">
           <Link
@@ -73,11 +80,13 @@ export function SiteHeader() {
             <HeaderAction href={siteConfig.phoneHref} label="Sună acum">
               <PhoneIcon className="h-5 w-5" />
             </HeaderAction>
-            <HeaderAction href={siteConfig.whatsAppUrl} label="Scrie pe WhatsApp">
+            <HeaderAction
+              href={siteConfig.whatsAppUrl}
+              label="Scrie pe WhatsApp"
+              tone="whatsapp"
+            >
               <WhatsAppIcon className="h-5 w-5" />
             </HeaderAction>
-
-            <ThemeToggle />
 
             <button
               type="button"
@@ -95,7 +104,7 @@ export function SiteHeader() {
         {isMenuOpen ? (
           <div
             id="mobile-menu"
-            className="mb-4 rounded-2xl border border-border bg-card/96 p-3 shadow-soft backdrop-blur lg:hidden"
+            className="mb-3 rounded-2xl border border-border bg-card/96 p-3 shadow-soft backdrop-blur lg:hidden"
           >
             <nav className="grid gap-1" aria-label="Navigație mobilă">
               {navigationLinks.map((link) => {
@@ -119,6 +128,10 @@ export function SiteHeader() {
             </nav>
           </div>
         ) : null}
+
+        <div className="border-t border-border/60 py-2">
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

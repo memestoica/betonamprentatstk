@@ -7,14 +7,14 @@ import { buildMetadata, siteConfig } from "@/lib/site";
 export const metadata: Metadata = buildMetadata({
   title: "Despre noi",
   description:
-    "Afla mai multe despre Beton Amprentat STK, echipa practica ce executa lucrari de beton amprentat in toata Romania.",
+    "Beton Amprentat STK este o echipă specializată exclusiv în beton amprentat pentru curți, terase, alei și spații exterioare în toată România.",
   path: "/despre-noi",
 });
 
-const principles = [
-  "Suntem o echipa mica, practica si concentrata pe lucrari de beton amprentat executate bine.",
-  "Lucram in toata Romania, cu organizare clara si comunicare directa despre etape, timp si rezultate.",
-  "Folosim materiale durabile si urmarim o executie curata, potrivita pentru proiecte rezidentiale si comerciale.",
+const values = [
+  "Lucrăm exclusiv cu beton amprentat, fără să împărțim atenția cu alte servicii.",
+  "Avem experiență de peste 7 ani în Spania și Franța, plus peste 5 ani de lucrări în România.",
+  "Ne deplasăm în toată țara, inclusiv în localități rurale și zone rezidențiale mai mici.",
 ];
 
 export default function AboutPage() {
@@ -22,21 +22,26 @@ export default function AboutPage() {
     <div className="page-shell section-space">
       <PageHero
         eyebrow="Despre noi"
-        title="O echipa mica, serioasa si orientata spre rezultat"
-        description="Beton Amprentat STK pune accent pe solutii practice, discutii clare si lucrari durabile pentru curti, terase si alei."
-        primaryCta={{ href: "/contact", label: "Mergi la contact" }}
+        title="O echipă specializată în beton amprentat"
+        description="Beton Amprentat STK execută lucrări pentru curți, terase, alei, scări, piscine și spații exterioare, cu accent pe durabilitate, comunicare clară și garanție pentru lucrare."
+        primaryCta={{ href: "/#pret-estimativ", label: "Obține preț estimativ" }}
+        secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
+        image={{
+          src: "/images/portfolio/rural-irregular-slate-stamped-concrete-alley.jpg",
+          alt: "Alee rurală cu beton amprentat gri",
+        }}
       />
 
       <section className="section-space">
         <SectionHeading
-          title="Cum lucram"
-          description="Preferam promisiuni realiste, etape bine explicate si o executie care lasa spatiul ordonat la final."
+          title="Experiență practică, comunicare directă"
+          description="Ne interesează ca fiecare client să înțeleagă opțiunile, etapele și modul corect de întreținere a lucrării."
         />
         <div className="grid gap-4 lg:grid-cols-3">
-          {principles.map((item) => (
+          {values.map((item) => (
             <article
               key={item}
-              className="rounded-[1.5rem] border border-border bg-card p-6 shadow-soft"
+              className="rounded-2xl border border-border bg-card p-6 shadow-soft"
             >
               <p className="text-sm leading-7 text-muted sm:text-base">{item}</p>
             </article>
@@ -44,36 +49,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-space">
-        <div className="grid gap-6 rounded-[2rem] border border-border bg-card p-6 shadow-soft sm:p-8 lg:grid-cols-2">
-          <div>
-            <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Lucrari in toata Romania
-            </h2>
-            <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
-              Indiferent daca proiectul este intr-un oras mare sau intr-o zona
-              rezidentiala in dezvoltare, pregatim executia astfel incat sa ai
-              claritate de la inceput despre ce urmeaza.
-            </p>
-          </div>
-          <div className="space-y-4 rounded-[1.75rem] border border-copper/20 bg-copper/8 p-6">
-            <p className="text-sm leading-7 text-muted sm:text-base">
-              Punem accent pe seriozitate, raspunsuri clare si materiale
-              potrivite pentru un finisaj rezistent in timp.
-            </p>
-            <p className="text-sm leading-7 text-muted sm:text-base">
-              Pentru noi conteaza nu doar aspectul final, ci si felul in care
-              decurge santierul: curat, previzibil si bine coordonat.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <CtaBanner
-        title="Hai sa discutam despre lucrarea ta"
-        description="Solicita o estimare gratuita si iti spunem ce variante se potrivesc cel mai bine pentru spatiul tau."
-        primaryCta={{ href: "/contact", label: "Contacteaza-ne" }}
-        secondaryCta={{ href: siteConfig.phoneHref, label: "Suna acum" }}
+        title="Hai să discutăm despre lucrarea ta"
+        description="Trimite localitatea, județul, suprafața aproximativă și câteva poze cu zona unde dorești beton amprentat."
+        primaryCta={{ href: "/#pret-estimativ", label: "Obține preț estimativ" }}
+        secondaryCta={{ href: siteConfig.whatsAppUrl, label: "WhatsApp" }}
       />
     </div>
   );

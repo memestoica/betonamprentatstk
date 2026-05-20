@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
 
+const defaultWhatsAppMessage = encodeURIComponent(
+  "Bună ziua! Doresc o ofertă pentru beton amprentat.",
+);
+
 export const siteConfig = {
   name: "Beton Amprentat STK",
   url: "https://betonamprentatstk.ro",
-  phoneDisplay: "0740 000 000",
-  phoneHref: "tel:+40740000000",
-  whatsAppUrl: "https://wa.me/40740000000",
+  phoneDisplay: "0779 282 982",
+  phoneHref: "tel:0779282982",
+  whatsAppBaseUrl: "https://wa.me/40779282982",
+  whatsAppUrl: `https://wa.me/40779282982?text=${defaultWhatsAppMessage}`,
+  email: "Email disponibil în curând",
+  areaServed: "Toată România",
 };
 
 export const navigationLinks = [
   { href: "/despre-noi", label: "Despre noi" },
-  { href: "/modele-si-culori-beton", label: "Modele și culori beton" },
-  { href: "/portofoliu", label: "Portofoliu" },
+  { href: "/#pret-estimativ", label: "Obține preț estimativ" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -19,69 +25,36 @@ export const benefits = [
   {
     title: "Lucrăm în toată România",
     description:
-      "Ne deplasăm pentru proiecte rezidențiale și comerciale, cu organizare clară și planificare adaptată locației.",
+      "Ne deplasăm pentru lucrări de beton amprentat în localități din toată țara, în special în zone rurale și zone rezidențiale.",
   },
   {
-    title: "Modele și culori moderne",
+    title: "Experiență internațională",
     description:
-      "Alegem finisaje care se potrivesc natural cu fațada, gardul, terasa sau curtea, fără compromis estetic.",
+      "Experiență de peste 7 ani în Spania și Franța, plus peste 5 ani de lucrări realizate în România.",
   },
   {
-    title: "Execuție rapidă și curată",
+    title: "Doar beton amprentat",
     description:
-      "Punem accent pe ritm bun de lucru, materiale durabile și șantier ordonat de la început până la predare.",
+      "Suntem specializați pe beton amprentat, pentru curți, terase, alei, scări, piscine și spații exterioare.",
+  },
+  {
+    title: "Garanție pentru lucrare",
+    description:
+      "Folosim materiale profesionale și oferim garanție pentru lucrările executate.",
   },
 ] as const;
 
-export const models = [
-  {
-    name: "Piatră naturală",
-    description:
-      "Aspect robust și elegant, potrivit pentru curți și zone de acces care cer personalitate.",
-  },
-  {
-    name: "Cărămidă",
-    description:
-      "Un model ordonat și familiar, bun pentru alei, trotuare de curte și zone decorative.",
-  },
-  {
-    name: "Lemn",
-    description:
-      "Textură caldă pentru terase și spații de relaxare unde vrei un aspect mai prietenos.",
-  },
-  {
-    name: "Dale",
-    description:
-      "Linii curate și ritm echilibrat, util pentru amenajări contemporane și suprafețe mari.",
-  },
-  {
-    name: "Pavaj",
-    description:
-      "Aspect tehnic și rezistent, potrivit pentru acces auto și spații cu trafic frecvent.",
-  },
-  {
-    name: "Busolă decorativă",
-    description:
-      "Accent central pentru terase, curți ample sau zone unde vrei un detaliu vizual memorabil.",
-  },
-] as const;
-
-export const colors = [
-  "Gri",
-  "Antracit",
-  "Maro",
-  "Roșcat",
-  "Crem",
-  "Bej",
-  "Gri deschis",
-] as const;
+export type PortfolioCategory =
+  | "Ardezie Ashlar"
+  | "Ardezie neregulată"
+  | "Lemn"
+  | "Evantai"
+  | "Alte lucrări";
 
 export type PortfolioItem = {
   title: string;
-  category: string;
+  category: PortfolioCategory;
   description: string;
-  model: string;
-  color: string;
   image: {
     src: string;
     alt: string;
@@ -90,99 +63,99 @@ export type PortfolioItem = {
 
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: "Curte rezidențială",
-    category: "Curți",
-    description:
-      "Amenajare pentru zona de acces și circulație zilnică, cu finisaj rezistent și ușor de întreținut.",
-    model: "Piatră naturală",
-    color: "Gri",
+    title: "Terasă și zonă piscină",
+    category: "Lemn",
+    description: "Beton amprentat cu aspect de lemn pentru o zonă de relaxare lângă piscină.",
     image: {
-      src: "/images/portfolio/grey-stone-stamped-concrete-courtyard.jpg",
-      alt: "Curte cu beton amprentat gri, model piatră naturală",
+      src: "/images/portfolio/pool-terrace-wood-stamped-concrete.jpg",
+      alt: "Terasă cu beton amprentat model lemn lângă piscină",
     },
   },
   {
-    title: "Terasă gri antracit",
-    category: "Terase",
-    description:
-      "Suprafață amplă cu model modern, potrivită pentru acces și utilizare zilnică.",
-    model: "Dale",
-    color: "Antracit",
+    title: "Terasă gri modernă",
+    category: "Ardezie Ashlar",
+    description: "Suprafață amplă cu model Ashlar, potrivită pentru curți și terase rezidențiale.",
     image: {
-      src: "/images/portfolio/large-grey-stamped-concrete-terrace.jpg",
-      alt: "Terasă mare cu beton amprentat gri antracit",
+      src: "/images/portfolio/grey-ashlar-stamped-concrete-terrace.jpg",
+      alt: "Terasă gri cu beton amprentat model Ardezie Ashlar",
+    },
+  },
+  {
+    title: "Curte cu piatră neregulată",
+    category: "Ardezie neregulată",
+    description: "Model neregulat, cu aspect de piatră naturală, pentru curți și alei exterioare.",
+    image: {
+      src: "/images/portfolio/irregular-slate-stamped-concrete-courtyard.jpg",
+      alt: "Curte cu beton amprentat model ardezie neregulată",
+    },
+  },
+  {
+    title: "Alee în localitate rurală",
+    category: "Ardezie neregulată",
+    description: "Alee rezistentă pentru casă și grădină, executată cu beton amprentat gri.",
+    image: {
+      src: "/images/portfolio/rural-irregular-slate-stamped-concrete-alley.jpg",
+      alt: "Alee rurală cu beton amprentat model ardezie neregulată",
     },
   },
   {
     title: "Alee model lemn",
-    category: "Model lemn",
-    description:
-      "Textură de lemn în nuanță gri, potrivită pentru alei laterale și zone de trecere.",
-    model: "Lemn",
-    color: "Antracit",
+    category: "Lemn",
+    description: "Textură de lemn în nuanță gri, potrivită pentru alei și zone de trecere.",
     image: {
-      src: "/images/portfolio/wood-pattern-stamped-concrete.jpg",
-      alt: "Alee cu beton amprentat model lemn în culoare antracit",
+      src: "/images/portfolio/wood-pattern-stamped-concrete-walkway.jpg",
+      alt: "Alee cu beton amprentat model lemn în culoare gri",
     },
   },
   {
-    title: "Zonă piscină",
-    category: "Piscine",
-    description:
-      "Deck decorativ în jurul piscinei, cu aspect luminos și integrare curată în grădină.",
-    model: "Lemn",
-    color: "Gri deschis",
+    title: "Model evantai cu busolă",
+    category: "Evantai",
+    description: "Lucrare decorativă cu model evantai și busolă centrală pentru o curte expresivă.",
     image: {
-      src: "/images/portfolio/stamped-concrete-pool-deck.jpg",
-      alt: "Zonă de piscină cu beton amprentat model lemn gri deschis",
+      src: "/images/portfolio/fan-pattern-decorative-compass-concrete.jpg",
+      alt: "Beton amprentat model evantai cu busolă decorativă",
     },
   },
   {
-    title: "Scări și acces",
-    category: "Scări",
-    description:
-      "Soluție pentru trepte și zone de tranziție, cu continuitate între niveluri.",
-    model: "Piatră naturală",
-    color: "Maro",
+    title: "Scări beton amprentat",
+    category: "Alte lucrări",
+    description: "Scări finisate cu beton amprentat maro, integrate cu zona de acces.",
     image: {
-      src: "/images/portfolio/stamped-concrete-stairs.jpg",
+      src: "/images/portfolio/brown-stamped-concrete-stairs.jpg",
       alt: "Scări finisate cu beton amprentat maro",
     },
   },
   {
-    title: "Busolă decorativă",
-    category: "Busolă decorativă",
-    description:
-      "Element decorativ pentru zone centrale, potrivit când proiectul are nevoie de un accent distinct.",
-    model: "Busolă decorativă",
-    color: "Antracit",
+    title: "Zonă exterioară lângă piscină",
+    category: "Alte lucrări",
+    description: "Suprafață exterioară luminoasă, potrivită pentru zone de piscină și relaxare.",
     image: {
-      src: "/images/portfolio/decorative-compass-concrete.jpg",
-      alt: "Model busolă decorativă în beton amprentat gri",
+      src: "/images/portfolio/light-stamped-concrete-pool-area.jpg",
+      alt: "Zonă exterioară lângă piscină cu beton amprentat deschis la culoare",
     },
   },
 ];
 
 export const processSteps = [
   {
-    title: "Contact",
+    title: "Ne trimiți detaliile",
     description:
-      "Ne spui pe scurt ce suprafață ai și ce rezultat îți dorești, prin telefon sau mesaj.",
+      "Ne spui localitatea, suprafața aproximativă și tipul lucrării.",
   },
   {
-    title: "Estimare",
+    title: "Primești recomandări",
     description:
-      "Discutăm variante de model, culoare și suprafață pentru o evaluare inițială clară.",
+      "Discutăm despre model, culoare, pregătirea terenului și estimarea lucrării.",
   },
   {
-    title: "Execuție",
+    title: "Stabilim execuția",
     description:
-      "Stabilim perioada de lucru și executăm cu materiale durabile și atenție la detalii.",
+      "Planificăm perioada de lucru în funcție de suprafață, vreme și disponibilitate.",
   },
   {
-    title: "Finalizare",
+    title: "Finalizăm lucrarea",
     description:
-      "Predăm lucrarea curat, cu recomandări utile pentru întreținere și folosire corectă.",
+      "Executăm lucrarea, aplicăm finisajul și oferim indicații pentru întreținere.",
   },
 ] as const;
 

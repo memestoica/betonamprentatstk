@@ -1,16 +1,10 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 
-const routes = [
-  "",
-  "/despre-noi",
-  "/modele-si-culori-beton",
-  "/portofoliu",
-  "/contact",
-] as const;
+const routes = ["", "/despre-noi", "/portofoliu", "/contact"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-05-08T00:00:00.000Z");
+  const lastModified = new Date("2026-05-20T00:00:00.000Z");
 
   return routes.map((route, index) => ({
     url: `${siteConfig.url}${route}`,

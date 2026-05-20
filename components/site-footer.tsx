@@ -10,15 +10,15 @@ export function SiteFooter() {
             Beton Amprentat STK
           </p>
           <p className="mt-3 text-sm leading-7 text-muted sm:text-base">
-            Executam lucrari de beton amprentat pentru curti, terase si alei,
-            cu interventii in toata Romania si comunicare clara de la prima
-            discutie pana la finalizare.
+            Executăm exclusiv lucrări de beton amprentat pentru curți, terase,
+            alei, scări, piscine și spații exterioare, cu deplasare în toată
+            România.
           </p>
         </div>
         <div className="flex flex-col gap-6 sm:flex-row sm:gap-10">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-copper">
-              Navigatie
+              Navigație
             </p>
             <div className="mt-3 flex flex-col gap-2 text-sm text-muted">
               {navigationLinks.map((link) => (
@@ -26,6 +26,9 @@ export function SiteFooter() {
                   {link.label}
                 </Link>
               ))}
+              <Link href="/portofoliu" className="hover:text-foreground">
+                Portofoliu
+              </Link>
             </div>
           </div>
           <div>
@@ -39,7 +42,8 @@ export function SiteFooter() {
               <a href={siteConfig.whatsAppUrl} className="hover:text-foreground">
                 WhatsApp
               </a>
-              <span>Disponibil in toata Romania</span>
+              <span>{siteConfig.email}</span>
+              <span>{siteConfig.areaServed}</span>
             </div>
           </div>
         </div>

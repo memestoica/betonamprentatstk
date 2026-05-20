@@ -8,7 +8,7 @@ import { buildMetadata, portfolioItems, siteConfig } from "@/lib/site";
 export const metadata: Metadata = buildMetadata({
   title: "Portofoliu beton amprentat",
   description:
-    "Vezi lucrări beton amprentat în România pentru curți, terase, piscine, scări, model lemn și busolă decorativă.",
+    "Lucrări reale de beton amprentat în România pentru curți, terase, alei, piscine și spații exterioare.",
   path: "/portofoliu",
 });
 
@@ -17,19 +17,20 @@ export default function PortfolioPage() {
     <div className="page-shell section-space">
       <PageHero
         eyebrow="Portofoliu"
-        title="Lucrări reale de beton amprentat"
-        description="Galerie pentru lucrări de beton amprentat în România: curți, terase, piscine, scări, model lemn și busolă decorativă."
-        primaryCta={{ href: "/contact", label: "Solicită o estimare" }}
+        title="Lucrări realizate"
+        description="Vezi exemple reale de curți, terase, alei și zone exterioare amenajate cu beton amprentat."
+        primaryCta={{ href: "/#pret-estimativ", label: "Obține preț estimativ" }}
+        secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
         image={{
-          src: "/images/portfolio/grey-stone-stamped-concrete-courtyard.jpg",
-          alt: "Curte cu beton amprentat gri, model piatră naturală",
+          src: "/images/portfolio/grey-ashlar-stamped-concrete-terrace.jpg",
+          alt: "Terasă gri cu beton amprentat model Ardezie Ashlar",
         }}
       />
 
       <section className="section-space">
         <SectionHeading
           title="Portofoliu beton amprentat"
-          description="Fotografii selectate din proiecte reale, optimizate pentru încărcare rapidă și afișare responsivă."
+          description="Fotografii reale selectate pentru v1, organizate pe categorii simple: Ardezie Ashlar, Ardezie neregulată, Lemn, Evantai și Alte lucrări."
         />
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {portfolioItems.map((item, index) => (
@@ -43,9 +44,9 @@ export default function PortfolioPage() {
       </section>
 
       <CtaBanner
-        title="Vrei o lucrare care să arate bine și după ani de folosire?"
-        description="Scrie-ne sau sună-ne pentru o estimare gratuită și o recomandare potrivită pentru suprafața ta."
-        primaryCta={{ href: "/contact", label: "Mergi la contact" }}
+        title="Ai o curte, terasă sau alee de amenajat?"
+        description="Trimite-ne localitatea, suprafața aproximativă și câteva poze cu zona. Îți răspundem cu recomandări clare pentru beton amprentat."
+        primaryCta={{ href: "/#pret-estimativ", label: "Obține preț estimativ" }}
         secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
       />
     </div>
