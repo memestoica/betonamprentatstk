@@ -2,28 +2,32 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { MenuIcon, PhoneIcon, WhatsAppIcon } from "@/components/icons";
 import { SiteLogo } from "@/components/logo/site-logo";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { trackEvent, type AnalyticsEventName } from "@/lib/analytics";
 import { navigationLinks, siteConfig } from "@/lib/site";
 
 function HeaderAction({
   href,
   label,
+  eventName,
   tone = "default",
   children,
 }: {
   href: string;
   label: string;
+  eventName: AnalyticsEventName;
   tone?: "default" | "whatsapp";
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <a
       href={href}
       aria-label={label}
       title={label}
+      onClick={() => trackEvent(eventName, { location: "header" })}
       className={[
         "grid h-10 w-10 shrink-0 place-items-center rounded-full border shadow-soft backdrop-blur hover:-translate-y-0.5",
         tone === "whatsapp"
@@ -39,6 +43,12 @@ function HeaderAction({
 export function SiteHeader() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function trackEstimateNavClick(href: string) {
+    if (href.includes("pret-estimativ")) {
+      trackEvent("estimate_click", { location: "header" });
+    }
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/80 shadow-[0_10px_34px_rgba(17,24,39,0.08)] backdrop-blur-2xl">
@@ -63,6 +73,7 @@ export function SiteHeader() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => trackEstimateNavClick(link.href)}
                   className={[
                     "rounded-full px-4 py-2 text-sm font-semibold",
                     isActive
@@ -77,13 +88,18 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex min-w-0 items-center justify-end gap-1.5 sm:gap-2">
-            <HeaderAction href={siteConfig.phoneHref} label="Sună acum">
+            <HeaderAction
+              href={siteConfig.phoneHref}
+              label="Sună acum"
+              eventName="phone_click"
+            >
               <PhoneIcon className="h-5 w-5" />
             </HeaderAction>
             <HeaderAction
               href={siteConfig.whatsAppUrl}
               label="Scrie pe WhatsApp"
               tone="whatsapp"
+              eventName="whatsapp_click"
             >
               <WhatsAppIcon className="h-5 w-5" />
             </HeaderAction>
@@ -113,7 +129,10 @@ export function SiteHeader() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => {
+                      trackEstimateNavClick(link.href);
+                      setIsMenuOpen(false);
+                    }}
                     className={[
                       "rounded-xl px-4 py-3 text-sm font-semibold",
                       isActive

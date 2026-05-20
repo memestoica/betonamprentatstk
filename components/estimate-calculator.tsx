@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import { siteConfig } from "@/lib/site";
 
 type CalculatorInputProps = {
@@ -39,6 +40,13 @@ export function EstimateCalculator() {
   const [locality, setLocality] = useState("");
   const [county, setCounty] = useState("");
   const [surface, setSurface] = useState("");
+
+  const eventParams = {
+    location: "calculator",
+    locality: locality || undefined,
+    county: county || undefined,
+    surface: surface || undefined,
+  };
 
   const whatsAppMessage = encodeURIComponent(
     `Bună ziua! Doresc o ofertă pentru beton amprentat. Localitate: ${
@@ -92,6 +100,13 @@ export function EstimateCalculator() {
             inputMode="decimal"
             onChange={setSurface}
           />
+          <button
+            type="button"
+            onClick={() => trackEvent("estimate_click", eventParams)}
+            className="inline-flex w-full items-center justify-center rounded-full bg-copper px-5 py-3 text-sm font-semibold text-white hover:bg-copper-strong sm:w-fit"
+          >
+            Vezi estimarea
+          </button>
         </form>
       </div>
 
@@ -124,12 +139,14 @@ export function EstimateCalculator() {
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
           <a
             href={whatsAppHref}
+            onClick={() => trackEvent("whatsapp_click", eventParams)}
             className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1EAE54]"
           >
             Trimite detaliile pe WhatsApp
           </a>
           <a
             href={siteConfig.phoneHref}
+            onClick={() => trackEvent("phone_click", eventParams)}
             className="inline-flex items-center justify-center rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground hover:bg-background"
           >
             Sună acum

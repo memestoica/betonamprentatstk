@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { EstimateCalculator } from "@/components/estimate-calculator";
 import { PageHero } from "@/components/page-hero";
+import { TrackedLink } from "@/components/tracked-link";
 import { buildMetadata, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
@@ -29,21 +30,23 @@ export default function ContactPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <article className="rounded-2xl border border-border bg-card p-5 shadow-soft">
             <p className="text-sm text-muted">Telefon</p>
-            <a
+            <TrackedLink
               href={siteConfig.phoneHref}
+              location="contact"
               className="mt-2 block font-semibold text-foreground hover:text-copper"
             >
               {siteConfig.phoneDisplay}
-            </a>
+            </TrackedLink>
           </article>
           <article className="rounded-2xl border border-border bg-card p-5 shadow-soft">
             <p className="text-sm text-muted">WhatsApp</p>
-            <a
+            <TrackedLink
               href={siteConfig.whatsAppUrl}
+              location="contact"
               className="mt-2 block font-semibold text-foreground hover:text-copper"
             >
               {siteConfig.phoneDisplay}
-            </a>
+            </TrackedLink>
           </article>
           <article className="rounded-2xl border border-border bg-card p-5 shadow-soft">
             <p className="text-sm text-muted">Email</p>

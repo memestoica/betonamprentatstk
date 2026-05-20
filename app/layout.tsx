@@ -3,7 +3,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Fraunces, Manrope } from "next/font/google";
 import Script from "next/script";
-import { AnalyticsEvents } from "@/components/analytics-events";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -90,7 +89,6 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <SiteFooter />
           </div>
-          <AnalyticsEvents />
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>
@@ -101,7 +99,7 @@ export default function RootLayout({
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
+            window.gtag = function gtag(){window.dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${gaMeasurementId}');
           `}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrackedLink } from "@/components/tracked-link";
 import { navigationLinks, siteConfig } from "@/lib/site";
 
 export function SiteFooter() {
@@ -22,9 +23,14 @@ export function SiteFooter() {
             </p>
             <div className="mt-3 flex flex-col gap-2 text-sm text-muted">
               {navigationLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="hover:text-foreground">
+                <TrackedLink
+                  key={link.href}
+                  href={link.href}
+                  location="footer"
+                  className="hover:text-foreground"
+                >
                   {link.label}
-                </Link>
+                </TrackedLink>
               ))}
               <Link href="/portofoliu" className="hover:text-foreground">
                 Portofoliu
@@ -36,12 +42,20 @@ export function SiteFooter() {
               Contact
             </p>
             <div className="mt-3 flex flex-col gap-2 text-sm text-muted">
-              <a href={siteConfig.phoneHref} className="hover:text-foreground">
+              <TrackedLink
+                href={siteConfig.phoneHref}
+                location="footer"
+                className="hover:text-foreground"
+              >
                 {siteConfig.phoneDisplay}
-              </a>
-              <a href={siteConfig.whatsAppUrl} className="hover:text-foreground">
+              </TrackedLink>
+              <TrackedLink
+                href={siteConfig.whatsAppUrl}
+                location="footer"
+                className="hover:text-foreground"
+              >
                 WhatsApp
-              </a>
+              </TrackedLink>
               <span>{siteConfig.email}</span>
               <span>{siteConfig.areaServed}</span>
             </div>

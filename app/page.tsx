@@ -5,6 +5,7 @@ import { EstimateCalculator } from "@/components/estimate-calculator";
 import { PageHero } from "@/components/page-hero";
 import { PortfolioCard } from "@/components/portfolio-card";
 import { SectionHeading } from "@/components/section-heading";
+import { TrackedLink } from "@/components/tracked-link";
 import {
   benefits,
   buildMetadata,
@@ -54,12 +55,13 @@ export default function HomePage() {
           }}
         >
           <div className="flex flex-col gap-3 sm:flex-row">
-            <a
+            <TrackedLink
               href={siteConfig.whatsAppUrl}
+              location="hero"
               className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1EAE54]"
             >
               WhatsApp
-            </a>
+            </TrackedLink>
             <Link
               href="/portofoliu"
               className="inline-flex items-center justify-center rounded-full border border-border bg-card/80 px-6 py-3 text-sm font-semibold text-foreground hover:bg-background"
@@ -194,18 +196,20 @@ export default function HomePage() {
             </div>
           </dl>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
+            <TrackedLink
               href={siteConfig.whatsAppUrl}
+              location="footer"
               className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1EAE54]"
             >
               WhatsApp
-            </a>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={siteConfig.phoneHref}
+              location="footer"
               className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-background"
             >
               Sună acum
-            </a>
+            </TrackedLink>
           </div>
         </div>
       </section>

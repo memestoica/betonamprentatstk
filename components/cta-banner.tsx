@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedLink } from "@/components/tracked-link";
 
 type CtaBannerProps = {
   title: string;
@@ -31,18 +31,20 @@ export function CtaBanner({
         <p className="mt-4 text-sm leading-7 text-muted sm:text-base">{description}</p>
       </div>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <Link
+        <TrackedLink
           href={primaryCta.href}
+          location="footer"
           className="inline-flex items-center justify-center rounded-full bg-copper px-6 py-3 text-sm font-semibold text-white hover:-translate-y-0.5 hover:bg-copper-strong"
         >
           {primaryCta.label}
-        </Link>
-        <a
+        </TrackedLink>
+        <TrackedLink
           href={secondaryCta.href}
+          location="footer"
           className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-background"
         >
           {secondaryCta.label}
-        </a>
+        </TrackedLink>
       </div>
     </div>
   );

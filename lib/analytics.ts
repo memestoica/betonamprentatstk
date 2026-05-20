@@ -26,3 +26,24 @@ export function trackEvent(
 
   window.gtag("event", eventName, params);
 }
+
+export function getTrackedEventFromHref(href: string): AnalyticsEventName | null {
+  const normalizedHref = href.toLowerCase();
+
+  if (normalizedHref.startsWith("tel:")) {
+    return "phone_click";
+  }
+
+  if (
+    normalizedHref.includes("wa.me") ||
+    normalizedHref.includes("whatsapp.com")
+  ) {
+    return "whatsapp_click";
+  }
+
+  if (normalizedHref.includes("pret-estimativ")) {
+    return "estimate_click";
+  }
+
+  return null;
+}
