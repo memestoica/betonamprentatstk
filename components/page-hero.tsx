@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { TrackedLink } from "@/components/tracked-link";
+import type { AnalyticsEventName } from "@/lib/analytics";
 
 type PageHeroProps = {
   eyebrow: string;
@@ -9,10 +10,12 @@ type PageHeroProps = {
   primaryCta: {
     href: string;
     label: string;
+    eventName: AnalyticsEventName;
   };
   secondaryCta?: {
     href: string;
     label: string;
+    eventName: AnalyticsEventName;
   };
   image?: {
     src: string;
@@ -47,6 +50,7 @@ export function PageHero({
             <TrackedLink
               href={primaryCta.href}
               location="hero"
+              eventName={primaryCta.eventName}
               className="inline-flex items-center justify-center rounded-full bg-copper px-6 py-3 text-sm font-semibold text-white hover:-translate-y-0.5 hover:bg-copper-strong"
             >
               {primaryCta.label}
@@ -55,6 +59,7 @@ export function PageHero({
               <TrackedLink
                 href={secondaryCta.href}
                 location="hero"
+                eventName={secondaryCta.eventName}
                 className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-background"
               >
                 {secondaryCta.label}

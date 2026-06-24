@@ -49,8 +49,13 @@ export default function HomePage() {
           primaryCta={{
             href: siteConfig.whatsAppUrl,
             label: "Cere ofertă pe WhatsApp",
+            eventName: "whatsapp_click",
           }}
-          secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
+          secondaryCta={{
+            href: siteConfig.phoneHref,
+            label: "Sună acum",
+            eventName: "phone_click",
+          }}
           image={{
             src: "/images/portfolio/pool-terrace-wood-stamped-concrete.jpg",
             alt: "Terasă cu beton amprentat lângă piscină",
@@ -173,6 +178,7 @@ export default function HomePage() {
             <TrackedLink
               href={siteConfig.phoneHref}
               location="price_factors"
+              eventName="phone_click"
               className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-background"
             >
               Sună acum
@@ -180,6 +186,7 @@ export default function HomePage() {
             <TrackedLink
               href={siteConfig.whatsAppUrl}
               location="price_factors"
+              eventName="whatsapp_click"
               className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1EAE54]"
             >
               Trimite detalii pe WhatsApp
@@ -219,14 +226,16 @@ export default function HomePage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <TrackedLink
               href={siteConfig.whatsAppUrl}
-              location="footer"
+              location="contact"
+              eventName="whatsapp_click"
               className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1EAE54]"
             >
               Trimite mesaj pe WhatsApp
             </TrackedLink>
             <TrackedLink
               href={siteConfig.phoneHref}
-              location="footer"
+              location="contact"
+              eventName="phone_click"
               className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-background"
             >
               Sună acum

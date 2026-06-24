@@ -12,6 +12,7 @@ export function MobileContactActions() {
         <TrackedLink
           href={siteConfig.phoneHref}
           location="mobile_sticky"
+          eventName="phone_click"
           aria-label="Sună acum"
           className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-copper/40 bg-card px-4 text-sm font-semibold text-foreground shadow-soft hover:border-copper hover:text-copper"
         >
@@ -21,6 +22,7 @@ export function MobileContactActions() {
         <TrackedLink
           href={siteConfig.whatsAppUrl}
           location="mobile_sticky"
+          eventName="whatsapp_click"
           aria-label="Trimite mesaj pe WhatsApp"
           className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 text-sm font-semibold text-white shadow-soft hover:bg-[#1EAE54]"
         >

@@ -15,7 +15,10 @@ type TrackedLinkProps = {
   location: string;
   eventName?: AnalyticsEventName;
   eventParams?: Record<string, string | number | boolean | undefined>;
-} & Pick<AnchorHTMLAttributes<HTMLAnchorElement>, "aria-label" | "title">;
+} & Pick<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  "aria-label" | "title" | "target" | "rel"
+>;
 
 function isInternalHref(href: string) {
   return href.startsWith("/") || href.startsWith("#");
@@ -31,6 +34,13 @@ export function TrackedLink({
   ...anchorProps
 }: TrackedLinkProps) {
   const trackedEventName = eventName ?? getTrackedEventFromHref(href);
+  const isWhatsAppLink = trackedEventName === "whatsapp_click";
+  const externalAnchorProps = {
+    target: anchorProps.target ?? (isWhatsAppLink ? "_blank" : undefined),
+    rel:
+      anchorProps.rel ??
+      (isWhatsAppLink ? "noopener noreferrer" : undefined),
+  };
 
   function handleClick() {
     if (!trackedEventName) {
@@ -58,7 +68,13 @@ export function TrackedLink({
   }
 
   return (
-    <a href={href} className={className} onClick={handleClick} {...anchorProps}>
+    <a
+      href={href}
+      className={className}
+      onClick={handleClick}
+      {...anchorProps}
+      {...externalAnchorProps}
+    >
       {children}
     </a>
   );

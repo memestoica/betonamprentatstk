@@ -41,6 +41,7 @@ export function SiteFooter() {
               <TrackedLink
                 href={siteConfig.phoneHref}
                 location="footer"
+                eventName="phone_click"
                 className="hover:text-foreground"
               >
                 {siteConfig.phoneDisplay}
@@ -48,6 +49,7 @@ export function SiteFooter() {
               <TrackedLink
                 href={siteConfig.whatsAppUrl}
                 location="footer"
+                eventName="whatsapp_click"
                 className="hover:text-foreground"
               >
                 WhatsApp

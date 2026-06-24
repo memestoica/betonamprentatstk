@@ -20,8 +20,13 @@ export default function ContactPage() {
         primaryCta={{
           href: siteConfig.whatsAppUrl,
           label: "Trimite mesaj pe WhatsApp",
+          eventName: "whatsapp_click",
         }}
-        secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
+        secondaryCta={{
+          href: siteConfig.phoneHref,
+          label: "Sună acum",
+          eventName: "phone_click",
+        }}
         image={{
           src: "/images/portfolio/light-stamped-concrete-pool-area.jpg",
           alt: "Zonă exterioară lângă piscină cu beton amprentat",
@@ -35,6 +40,7 @@ export default function ContactPage() {
             <TrackedLink
               href={siteConfig.phoneHref}
               location="contact"
+              eventName="phone_click"
               className="mt-2 block font-semibold text-foreground hover:text-copper"
             >
               {siteConfig.phoneDisplay}
@@ -45,6 +51,7 @@ export default function ContactPage() {
             <TrackedLink
               href={siteConfig.whatsAppUrl}
               location="contact"
+              eventName="whatsapp_click"
               className="mt-2 block font-semibold text-foreground hover:text-copper"
             >
               {siteConfig.phoneDisplay}

@@ -22,8 +22,13 @@ export default function PortfolioPage() {
         primaryCta={{
           href: siteConfig.whatsAppUrl,
           label: "Cere ofertă pe WhatsApp",
+          eventName: "whatsapp_click",
         }}
-        secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
+        secondaryCta={{
+          href: siteConfig.phoneHref,
+          label: "Sună acum",
+          eventName: "phone_click",
+        }}
         image={{
           src: "/images/portfolio/grey-ashlar-stamped-concrete-terrace.jpg",
           alt: "Terasă gri cu beton amprentat model Ardezie Ashlar",
@@ -52,8 +57,13 @@ export default function PortfolioPage() {
         primaryCta={{
           href: siteConfig.whatsAppUrl,
           label: "Trimite mesaj pe WhatsApp",
+          eventName: "whatsapp_click",
         }}
-        secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
+        secondaryCta={{
+          href: siteConfig.phoneHref,
+          label: "Sună acum",
+          eventName: "phone_click",
+        }}
       />
     </div>
   );

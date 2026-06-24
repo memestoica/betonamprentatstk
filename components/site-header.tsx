@@ -28,6 +28,8 @@ function HeaderAction({
       href={href}
       aria-label={label}
       title={label}
+      target={eventName === "whatsapp_click" ? "_blank" : undefined}
+      rel={eventName === "whatsapp_click" ? "noopener noreferrer" : undefined}
       onClick={() => trackEvent(eventName, { location: "header" })}
       className={[
         "inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full border px-3.5 text-sm font-semibold shadow-soft backdrop-blur hover:-translate-y-0.5",

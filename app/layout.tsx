@@ -6,6 +6,7 @@ import Script from "next/script";
 import { MobileContactActions } from "@/components/mobile-contact-actions";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -18,8 +19,6 @@ const manrope = Manrope({
   variable: "--font-sans",
   subsets: ["latin"],
 });
-
-const gaMeasurementId = "G-GYW9DD03FY";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -83,17 +82,9 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${gaMeasurementId}');
-          `}
-        </Script>
       </body>
     </html>
   );

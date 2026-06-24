@@ -27,8 +27,13 @@ export default function AboutPage() {
         primaryCta={{
           href: siteConfig.whatsAppUrl,
           label: "Cere ofertă pe WhatsApp",
+          eventName: "whatsapp_click",
         }}
-        secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
+        secondaryCta={{
+          href: siteConfig.phoneHref,
+          label: "Sună acum",
+          eventName: "phone_click",
+        }}
         image={{
           src: "/images/portfolio/rural-irregular-slate-stamped-concrete-alley.jpg",
           alt: "Alee rurală cu beton amprentat gri",
@@ -58,8 +63,13 @@ export default function AboutPage() {
         primaryCta={{
           href: siteConfig.whatsAppUrl,
           label: "Trimite mesaj pe WhatsApp",
+          eventName: "whatsapp_click",
         }}
-        secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
+        secondaryCta={{
+          href: siteConfig.phoneHref,
+          label: "Sună acum",
+          eventName: "phone_click",
+        }}
       />
     </div>
   );
