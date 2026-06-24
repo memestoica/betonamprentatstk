@@ -3,9 +3,9 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Fraunces, Manrope } from "next/font/google";
 import Script from "next/script";
+import { MobileContactActions } from "@/components/mobile-contact-actions";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -60,10 +60,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F7F4EF" },
-    { media: "(prefers-color-scheme: dark)", color: "#111827" },
-  ],
+  themeColor: "#111827",
 };
 
 export default function RootLayout({
@@ -74,24 +71,17 @@ export default function RootLayout({
   return (
     <html
       lang="ro"
-      suppressHydrationWarning
-      className={`${fraunces.variable} ${manrope.variable} scroll-smooth`}
+      className={`dark ${fraunces.variable} ${manrope.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="relative flex min-h-screen flex-col overflow-x-clip">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
-          <Analytics />
-          <SpeedInsights />
-        </ThemeProvider>
+      <body className="min-h-screen bg-background pb-24 font-sans text-foreground antialiased lg:pb-0">
+        <div className="relative flex min-h-screen flex-col overflow-x-clip">
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </div>
+        <MobileContactActions />
+        <Analytics />
+        <SpeedInsights />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
           strategy="afterInteractive"

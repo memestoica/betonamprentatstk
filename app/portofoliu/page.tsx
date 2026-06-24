@@ -19,7 +19,10 @@ export default function PortfolioPage() {
         eyebrow="Portofoliu"
         title="Lucrări realizate"
         description="Vezi exemple reale de curți, terase, alei și zone exterioare amenajate cu beton amprentat."
-        primaryCta={{ href: "/#pret-estimativ", label: "Obține preț estimativ" }}
+        primaryCta={{
+          href: siteConfig.whatsAppUrl,
+          label: "Cere ofertă pe WhatsApp",
+        }}
         secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
         image={{
           src: "/images/portfolio/grey-ashlar-stamped-concrete-terrace.jpg",
@@ -46,7 +49,10 @@ export default function PortfolioPage() {
       <CtaBanner
         title="Ai o curte, terasă sau alee de amenajat?"
         description="Trimite-ne localitatea, suprafața aproximativă și câteva poze cu zona. Îți răspundem cu recomandări clare pentru beton amprentat."
-        primaryCta={{ href: "/#pret-estimativ", label: "Obține preț estimativ" }}
+        primaryCta={{
+          href: siteConfig.whatsAppUrl,
+          label: "Trimite mesaj pe WhatsApp",
+        }}
         secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
       />
     </div>

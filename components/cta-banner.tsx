@@ -23,7 +23,7 @@ export function CtaBanner({
     <div className="overflow-hidden rounded-[2rem] border border-copper/20 bg-gradient-to-br from-copper/14 via-card to-card p-6 shadow-soft sm:p-8 lg:p-10">
       <div className="max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-copper">
-          Estimare gratuita
+          Contact direct
         </p>
         <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
           {title}

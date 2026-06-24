@@ -1,19 +1,7 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
-  --background: #f7f4ef;
-  --foreground: #1f2933;
-  --card: #ffffff;
-  --accent: #c47a3c;
-  --accent-strong: #9b5d2b;
-  --muted: #6b7280;
-  --border: rgba(31, 41, 51, 0.1);
-  --shadow: 0 18px 48px rgba(31, 41, 51, 0.08);
-}
-
-.dark {
+  color-scheme: dark;
   --background: #111827;
   --foreground: #f9fafb;
   --card: #1f2937;

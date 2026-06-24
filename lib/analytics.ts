@@ -1,7 +1,6 @@
 export type AnalyticsEventName =
   | "phone_click"
-  | "whatsapp_click"
-  | "estimate_click";
+  | "whatsapp_click";
 
 type AnalyticsEventParams = Record<string, string | number | boolean | undefined>;
 
@@ -39,10 +38,6 @@ export function getTrackedEventFromHref(href: string): AnalyticsEventName | null
     normalizedHref.includes("whatsapp.com")
   ) {
     return "whatsapp_click";
-  }
-
-  if (normalizedHref.includes("pret-estimativ")) {
-    return "estimate_click";
   }
 
   return null;

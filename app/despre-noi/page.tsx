@@ -24,7 +24,10 @@ export default function AboutPage() {
         eyebrow="Despre noi"
         title="O echipă specializată în beton amprentat"
         description="Beton Amprentat STK execută lucrări pentru curți, terase, alei, scări, piscine și spații exterioare, cu accent pe durabilitate, comunicare clară și garanție pentru lucrare."
-        primaryCta={{ href: "/#pret-estimativ", label: "Obține preț estimativ" }}
+        primaryCta={{
+          href: siteConfig.whatsAppUrl,
+          label: "Cere ofertă pe WhatsApp",
+        }}
         secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
         image={{
           src: "/images/portfolio/rural-irregular-slate-stamped-concrete-alley.jpg",
@@ -52,8 +55,11 @@ export default function AboutPage() {
       <CtaBanner
         title="Hai să discutăm despre lucrarea ta"
         description="Trimite localitatea, județul, suprafața aproximativă și câteva poze cu zona unde dorești beton amprentat."
-        primaryCta={{ href: "/#pret-estimativ", label: "Obține preț estimativ" }}
-        secondaryCta={{ href: siteConfig.whatsAppUrl, label: "WhatsApp" }}
+        primaryCta={{
+          href: siteConfig.whatsAppUrl,
+          label: "Trimite mesaj pe WhatsApp",
+        }}
+        secondaryCta={{ href: siteConfig.phoneHref, label: "Sună acum" }}
       />
     </div>
   );

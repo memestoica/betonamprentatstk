@@ -9,15 +9,13 @@ export const siteConfig = {
   url: "https://betonamprentatstk.ro",
   phoneDisplay: "0779 282 982",
   phoneHref: "tel:0779282982",
-  whatsAppBaseUrl: "https://wa.me/40779282982",
   whatsAppUrl: `https://wa.me/40779282982?text=${defaultWhatsAppMessage}`,
-  email: "Email disponibil în curând",
   areaServed: "Toată România",
 };
 
 export const navigationLinks = [
   { href: "/despre-noi", label: "Despre noi" },
-  { href: "/#pret-estimativ", label: "Obține preț estimativ" },
+  { href: "/portofoliu", label: "Portofoliu" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { TrackedLink } from "@/components/tracked-link";
 import { navigationLinks, siteConfig } from "@/lib/site";
 
@@ -32,9 +31,6 @@ export function SiteFooter() {
                   {link.label}
                 </TrackedLink>
               ))}
-              <Link href="/portofoliu" className="hover:text-foreground">
-                Portofoliu
-              </Link>
             </div>
           </div>
           <div>
@@ -56,7 +52,6 @@ export function SiteFooter() {
               >
                 WhatsApp
               </TrackedLink>
-              <span>{siteConfig.email}</span>
               <span>{siteConfig.areaServed}</span>
             </div>
           </div>
